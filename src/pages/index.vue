@@ -30,7 +30,7 @@ const createGame = () => {
 .home {
   background: #FEDCC5;
   min-height: 100vh;
-  background-image: url('public/assets/background-hero.png');
+  background-image: url('/assets/background-hero.png');
   background-repeat: no-repeat;
   background-position-y: bottom;
 }

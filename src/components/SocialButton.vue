@@ -10,7 +10,7 @@ const props = defineProps<{
 }>()
 const socialIcon = computed(() => {
   return (
-    props.socialType === 'facebook' ? 'assets/icon_fb.png' : props.socialType === 'github' ? 'assets/icon_github.png' : 'assets/icon_google.png'
+    props.socialType === 'facebook' ? '/assets/icon_fb.png' : props.socialType === 'github' ? '/assets/icon_github.png' : '/assets/icon_google.png'
   )
 })
 </script>

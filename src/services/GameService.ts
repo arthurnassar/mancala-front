@@ -11,7 +11,6 @@ const gameService = axios.create({
 
 
 
-// ========= FETCH CITIES BASED ON STATE CHOOSEN ===============
 const createGame = (data: CreateGame): Promise<AxiosResponse<Game, any>> => {
   return gameService.post(API_CREATE_GAME, data)
 }

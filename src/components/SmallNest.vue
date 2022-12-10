@@ -1,8 +1,8 @@
 <template>
   <div @click="choosePit" class="relative w-full justify-center items-center" style="max-width: 200px;">
-    <img class="w-full" src="assets/nest.png" alt="" style="max-width: 200px;" />
+    <img class="w-full" src="/assets/nest.png" alt="" style="max-width: 200px;" />
     <img v-if="nest.pieces.length >= 1" class="egg z-10 top-1/2 left-1/2  w-20 absolute"
-      :src="`assets/${nest.pieces.length}-eggs.png`" alt="">
+      :src="`/assets/${nest.pieces.length}-eggs.png`" alt="">
   </div>
 </template>
 
@@ -20,7 +20,7 @@ const props = defineProps<{
   player: number
 }>()
 const choosePit = () => {
-  const firstMoveAudio = new Audio('assets/first-move.wav')
+  const firstMoveAudio = new Audio('/assets/first-move.wav')
   firstMoveAudio.play()
   movePiece({
     gameId: props.gameId,
@@ -34,17 +34,17 @@ const choosePit = () => {
   })
 
   const makeMove = (game: Game) => {
-    const nextMovesAudio = new Audio('assets/next-move.wav')
+    const nextMovesAudio = new Audio('/assets/next-move.wav')
     nextMovesAudio.play().then(() => {
       gameStore.game = game
     })
     if (!!game.gameEnded && game.gameEnded !== 3) {
-      const winAudio = new Audio('assets/winner.wav')
+      const winAudio = new Audio('/assets/winner.wav')
       winAudio.play().then(() => {
         alert(`O vencedor é o Player ${endGame(game)}`)
       })
     } else if (!!game.gameEnded && game.gameEnded === 3) {
-      const winAudio = new Audio('assets/winner.wav')
+      const winAudio = new Audio('/assets/winner.wav')
       winAudio.play().then(() => {
         alert(`O jogo empatou`)
       })

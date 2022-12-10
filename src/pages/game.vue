@@ -39,7 +39,7 @@ const p2holes = computed(() => {
   <div class="home flex flex-col">
     <NavBar />
     <div class="flex flex-col justify-center items-center w-full grow">
-      <img v-if="gameStore.game?.turn" class="mb-10" :src="`assets/player-${gameStore.game?.turn}.png`"
+      <img v-if="gameStore.game?.turn" class="mb-10" :src="`/assets/player-${gameStore.game?.turn}.png`"
         alt="Player turn">
       <div class="flex game-board justify-center items-center w-full">
         <div class="flex w-32 md:w-64">
@@ -76,7 +76,7 @@ const p2holes = computed(() => {
 .home {
   background: #FEDCC5;
   min-height: 100vh;
-  background-image: url('public/assets/background-hero.png');
+  background-image: url('/assets/background-hero.png');
   background-repeat: no-repeat;
   background-position-y: bottom;
 }
