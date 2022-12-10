@@ -1,0 +1,6 @@
+{
+  "editor.suggest.showSnippets": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "editor.tabCompletion": "onlySnippets"
+}
