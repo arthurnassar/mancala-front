@@ -11,7 +11,7 @@
     </div>
     <div
       class="login-page--right col-span-12 md:flex absolute lg:relative lg:col-span-7 flex justify-center items-center">
-      <img src="public/assets/hero-image.png" class="h-full lg:h-3/4" alt="Hero image">
+      <img src="assets/hero-image.png" class="h-full lg:h-3/4" alt="Hero image">
     </div>
 
   </div>
