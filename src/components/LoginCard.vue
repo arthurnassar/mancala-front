@@ -52,8 +52,8 @@
 </template>
 
 <script setup lang="ts">
-import { auth } from '@/services/AuthService';
-import { createUser } from '@/services/UserService';
+import { authService } from '@/services/AuthService';
+import { userService } from '@/services/UserService';
 import type { CreateUserData } from '@/types/UserTypes';
 import type { Ref } from 'vue';
 import { useRouter } from 'vue-router/auto';
@@ -68,13 +68,13 @@ const form: CreateUserData = reactive({
 
 const loginOrRegister = () => {
   if (isLogin.value) {
-    auth.getAuth(form).then(res => {
+    authService.getAuth(form).then(res => {
       router.push('/')
     })
     return
   }
 
-  createUser(form).then(res => {
+  userService.createUser(form).then(res => {
     // TODO CREATE A TOAST WITH THE MESSAGE
     alert('User creation was successful you can now do login')
   })
