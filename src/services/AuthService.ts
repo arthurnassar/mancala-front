@@ -41,4 +41,4 @@ class AuthenticationService {
 }
 
 const apiBaseUrl = import.meta.env.PROD ? import.meta.env.VITE_API_BASE_URL : 'http://localhost:3000/'
-export const auth = new AuthenticationService(apiBaseUrl)
+export const authService = new AuthenticationService(apiBaseUrl)
