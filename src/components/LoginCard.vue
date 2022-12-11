@@ -1,5 +1,5 @@
 <template>
-  <div class="login-card p-10 lg:p-28 h-full w-full">
+  <div class="login-card p-10 lg:p-28 h-full md:h-auto w-full">
     <p class="logo mb-3.5">Mancala</p>
     <p class="title mb-7">{{ isLogin ? 'Login' : 'Create Account' }}</p>
 

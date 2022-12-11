@@ -6,7 +6,7 @@
 <template>
   <div class="login-page grid grid-cols-12 !bg-contain">
     <div
-      class="login-page--left md:min-w-[641px] z-10 col-span-12 lg:col-span-5 flex items-center py-5 md:py-28 pr-5 lg:pr-0 pl-5 md:pl-28">
+      class="login-page--left md:min-w-[641px] z-10 col-span-12 lg:col-span-5 flex items-center py-5 pr-5 lg:pr-0 pl-5 md:pl-28">
       <LoginCard />
     </div>
     <div
