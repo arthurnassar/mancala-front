@@ -1,33 +1,43 @@
-import axios, { type AxiosInstance, type AxiosResponse } from 'axios'
+import axios, { Axios, type AxiosInstance, type AxiosResponse } from 'axios'
 import { API_AUTH, type UserAuthFields } from '../types/AuthTypes'
 import { useUserStore } from '../stores/userStore'
 import jwt_decode from 'jwt-decode'
 
-const login: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/',
-  headers: { 'Content-Type': 'application/json' }
-})
+class AuthenticationService {
+  private baseURL: string 
+  private headers: { [key: string]: string}
+  private instance: AxiosInstance
 
-login.interceptors.response.use(
-  (res) => {
-    const { data } = res
-    const store = useUserStore()
+  constructor(baseURL: string) {
+    this.baseURL = baseURL
+    this.headers =  { 'Content-Type': 'application/json' }
+    this.instance = axios.create({
+      baseURL: this.baseURL,
+      headers: this.headers 
+    }) 
+
+    this.instance.interceptors.response.use(
+      (res) => {
+        const { data } = res
+        const store = useUserStore()
+        
+        store.bearerToken = data.id
+        store.isLoggedIn = true
+        store.user = data
     
-    store.bearerToken = data.id
-    store.isLoggedIn = true
-    store.user = data
-
-    return Promise.resolve(res)
-  },
-  function (error) {
-    return Promise.reject(error)
+        return Promise.resolve(res)
+      },
+      function (error) {
+        return Promise.reject(error)
+      }
+    )
   }
-)
 
-const getAuth = (
-  data: UserAuthFields
-): Promise<AxiosResponse<string, any>> => {
-  return login.post(API_AUTH, data as UserAuthFields)
+  getAuth(
+    data: UserAuthFields
+  ): Promise<AxiosResponse<string, any>> {
+    return this.instance.post(API_AUTH, data as UserAuthFields)
+  }  
 }
 
-export { getAuth }
+export const auth = new AuthenticationService(import.meta.env.DEV ? 'http://localhost:3000/' : import.meta.env.VITE_API_BASE_URL)

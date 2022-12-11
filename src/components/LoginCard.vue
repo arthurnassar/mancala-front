@@ -52,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { getAuth } from '@/services/AuthService';
+import { auth } from '@/services/AuthService';
 import { createUser } from '@/services/UserService';
 import type { CreateUserData } from '@/types/UserTypes';
 import type { Ref } from 'vue';
@@ -68,7 +68,7 @@ const form: CreateUserData = reactive({
 
 const loginOrRegister = () => {
   if (isLogin.value) {
-    getAuth(form).then(res => {
+    auth.getAuth(form).then(res => {
       router.push('/')
     })
     return
