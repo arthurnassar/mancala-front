@@ -20,3 +20,7 @@ const movePiece = (data: MovePieceData): Promise<AxiosResponse<Game[], any>> => 
 }
 
 export { createGame, movePiece }
+
+class GameService {
+  
+}
