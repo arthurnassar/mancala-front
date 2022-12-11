@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router';
 const router = useRouter()
 
-const createGame = () => {
+const createDefaultGame = () => {
   router.push({ path: '/game', query: { pits: 8, pieces: 4, userId: 14530846465328962 } })
 
 }
@@ -11,7 +11,7 @@ const createGame = () => {
   
 <template>
   <div class="home flex flex-col">
-    <NavBar @@create-game="createGame" />
+    <NavBar @@create-game="createDefaultGame" />
     <div class="flex flex-col justify-center items-center w-full grow">
       <GameInfo />
     </div>

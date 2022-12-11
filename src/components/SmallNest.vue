@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { movePiece } from '@/services/GameService';
+import { gameService } from '@/services/GameService';
 import { useGameStore } from '@/stores/gameStore';
 import type { Game, Pit } from '@/types/GameTypes';
 
@@ -19,10 +19,11 @@ const props = defineProps<{
   gameId: number
   player: number
 }>()
+
 const choosePit = () => {
   const firstMoveAudio = new Audio('/assets/first-move.wav')
   firstMoveAudio.play()
-  movePiece({
+  gameService.movePiece({
     gameId: props.gameId,
     player: props.player,
     pit: props.nest.pitNumber

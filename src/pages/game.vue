@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { createGame } from '@/services/GameService';
+import { gameService } from '@/services/GameService';
 import { useGameStore } from '@/stores/gameStore';
 import type { Game } from '@/types/GameTypes';
 import { promiseTimeout } from '@vueuse/shared';
@@ -10,7 +10,7 @@ const gameStore = useGameStore()
 
 onMounted(() => {
   console.log(route)
-  createGame(JSON.parse(route).query).then(res => {
+  gameService.createGame(JSON.parse(route).query).then(res => {
     gameStore.game = res.data
   })
 })
