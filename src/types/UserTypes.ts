@@ -4,7 +4,7 @@ export interface UserLogin {
 }
 
 export interface UserResponseData {
-  id: number | null
+  sub: string
   email: string
 }
 

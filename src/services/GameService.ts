@@ -1,3 +1,4 @@
+import { useUserStore } from '@/stores/userStore'
 import { API_CREATE_GAME, API_MOVE_PIECE, type CreateGame, type Game, type MovePieceData } from '@/types/GameTypes'
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios'
 
@@ -13,6 +14,19 @@ class GameService {
       baseURL: this.baseURL,
       headers: this.headers 
     })
+
+    this.instance.interceptors.request.use(
+      (config) => {
+        config.headers = config.headers ?? {};
+        const store = useUserStore()
+        const bearer_token = store.bearerToken as string
+        config.headers.Authorization = `Bearer ${bearer_token}`
+        return config
+      },
+      (error) => {
+        return Promise.reject(error);
+      }
+    )
   }
 
   createGame(data: CreateGame): Promise<AxiosResponse<Game, any>> {

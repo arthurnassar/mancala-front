@@ -15,7 +15,7 @@ export interface Pit {
 }
 
 export interface Game {
-  id: number;
+  _id: string;
   turn: 1 | 2;
   gameEnded?: 1 | 2 | 3;
   pitCount: number;
@@ -31,8 +31,7 @@ export interface Piece {
 }
 
 export interface MovePieceData {
-  gameId: number
-  player: number
+  gameId: string
   pit: number
   
 }

@@ -47,12 +47,12 @@ const p2holes = computed(() => {
         </div>
         <div class="container w-full">
           <div class="row flex-row-reverse flex no-wrap justify-evenly">
-            <SmallNest v-for="hole in p2holes" :key="hole.pitNumber" :player="2" :gameId="gameStore.game?.id ?? 0"
-              :nest="hole" />
+            <SmallNest v-for="hole in p2holes" :key="hole.pitNumber" :player="2"
+              :gameId="gameStore.game?._id as string ?? 0" :nest="hole" />
           </div>
           <div class="row flex no-wrap justify-evenly">
-            <SmallNest v-for="hole in p1holes" :key="hole.pitNumber" :player="1" :gameId="gameStore.game?.id ?? 0"
-              :nest="hole" />
+            <SmallNest v-for="hole in p1holes" :key="hole.pitNumber" :player="1"
+              :gameId="gameStore.game?._id as string ?? 0" :nest="hole" />
 
           </div>
         </div>

@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { useUserStore } from '@/stores/userStore';
 import { useRouter } from 'vue-router';
 const router = useRouter()
-
+const userStore = useUserStore()
 const createDefaultGame = () => {
-  router.push({ path: '/game', query: { pits: 8, pieces: 4, userId: 14530846465328962 } })
+  router.push({ path: '/game', query: { pits: 8, pieces: 4, userId: userStore.user.sub } })
 
 }
 </script>

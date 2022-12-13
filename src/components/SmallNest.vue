@@ -16,7 +16,7 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const props = defineProps<{
   nest: Pit
-  gameId: number
+  gameId: string
   player: number
 }>()
 
@@ -25,7 +25,6 @@ const choosePit = () => {
   firstMoveAudio.play()
   gameService.movePiece({
     gameId: props.gameId,
-    player: props.player,
     pit: props.nest.pitNumber
   }).then(async (res) => {
     for (let game of res.data) {

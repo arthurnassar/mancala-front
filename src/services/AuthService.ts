@@ -1,7 +1,7 @@
 import axios, { Axios, type AxiosInstance, type AxiosResponse } from 'axios'
 import { API_AUTH, type UserAuthFields } from '../types/AuthTypes'
 import { useUserStore } from '../stores/userStore'
-import jwt_decode from 'jwt-decode'
+import jwt_decode, { type JwtPayload } from 'jwt-decode'
 
 class AuthenticationService {
   private baseURL: string 
@@ -18,12 +18,19 @@ class AuthenticationService {
 
     this.instance.interceptors.response.use(
       (res) => {
-        const { data } = res
         const store = useUserStore()
+        const { data } = res
+        const payload = jwt_decode<{
+            email: string,
+            sub: string,
+        }>(data.access_token)
         
-        store.bearerToken = data.id
+        store.bearerToken = data.access_token
         store.isLoggedIn = true
-        store.user = data
+        store.user = {
+          sub: payload.sub,
+          email: payload.email
+        }
     
         return Promise.resolve(res)
       },
